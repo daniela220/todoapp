@@ -1,0 +1,140 @@
+
+
+body {
+    background: #333;
+    color: hsl(200, 100%, 90%);
+    margin: 0; /* Elimina el margen predeterminado del body */
+    padding: 0; /* Elimina el padding para evitar desalineaciones */
+    height: 100vh; /* Usa el alto de la ventana de visualización */
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+  }
+
+
+/* Estilos del Formulario */
+.new-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* Ajuste para mayor separación entre elementos */
+}
+
+.new-item-form input {
+  outline: none;
+  border: 1px solid hsl(200, 100%, 40%);
+  background: hsl(200, 100%, 30%);
+  border-radius: 0.25em;
+  padding: 0.5em; /* Ajuste para mayor área de clic */
+  color: hsl(200, 100%, 90%);
+}
+
+.new-item-form input:focus {
+  border-color: hsl(200, 100%, 70%);
+  background: hsl(200, 100%, 25%); /* Cambio para mayor contraste en el foco */
+}
+
+/* Estilos de los Botones */
+.btn {
+  background: hsl(200, 100%, 50%, 0.1);
+  border: 1px solid hsl(200, 100%, 50%);
+  color: hsl(200, 100%, 50%);
+  padding: 0.5em 1em; /* Ajuste para mayor tamaño del botón */
+  border-radius: 0.25em;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s, color 0.3s; /* Transición suave para el hover */
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: hsl(200, 100%, 50%, 0.2);
+}
+
+/* Botón de Peligro */
+.btn.btn-danger {
+  background: hsl(0, 100%, 40%, 0.1);
+  border: 1px solid hsl(0, 100%, 40%);
+  color: hsl(0, 100%, 40%);
+}
+
+.btn.btn-danger:hover,
+.btn.btn-danger:focus-visible {
+  background: hsl(0, 100%, 40%, 0.2);
+}
+
+/* Estilos del Encabezado */
+.header {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 0.5rem; /* Ajuste para márgenes superior e inferior */
+  color: black; /* Cambia el color del texto a negro */
+}
+
+/* Estilos de la Lista */
+.list {
+  margin: 0;
+  padding: 0;
+  margin-left: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Mayor separación entre elementos de la lista */
+}
+
+.list li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Estilos del Etiqueta y Checkbox */
+.list li label {
+  display: flex;
+  gap: 0.5rem; /* Ajuste para mayor espacio entre checkbox y texto */
+  cursor: pointer;
+  align-items: center;
+  font-size: 1rem; /* Ajuste para mayor legibilidad */
+}
+
+.list li input {
+  display: none; /* Oculta el checkbox */
+}
+
+.list li label::before {
+  content: "";
+  display: block;
+  width: 1rem; /* Tamaño del checkbox */
+  height: 1rem;
+  background: hsl(200, 100%, 90%);
+  border-radius: 0.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s; /* Transición suave para el hover */
+}
+
+.list li:hover::before {
+  background: hsl(200, 100%, 80%);
+}
+
+.list li input:checked + label::before {
+  content: "✔";
+  background: hsl(200, 100%, 40%);
+  color: hsl(200, 100%, 90%);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.list li input:checked + label:hover::before {
+  background: hsl(200, 100%, 30%);
+}
+
+.titulo {
+  color: black;
+
+}

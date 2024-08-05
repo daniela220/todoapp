@@ -1,0 +1,22 @@
+/* TodoList.css */
+
+/* Estilos para la lista de tareas */
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-width: 600px;
+    width: 100%;
+    background-color: #1276e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+/* Estilos para el mensaje cuando no hay tareas */
+.empty-message {
+    text-align: center;
+    font-size: 16px;
+    color: #521cb8;
+    padding: 20px;
+}

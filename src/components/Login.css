@@ -1,0 +1,108 @@
+/* Login.css */
+
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Fondo de la página */
+}
+
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Estilo del título y párrafo */
+.login-container h1 {
+    font-size: 28px;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+/* Contenedor del formulario */
+.container {
+    max-width: 500px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Estilo del formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.formLabel {
+    display: block;
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+.formInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilo del botón de envío */
+.btn-login {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.btn-login:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Estilo del mensaje de error */
+.alert {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.mt-3 {
+    color: #000000;
+    text-decoration: none;
+}
+/* Estilo del enlace de registro */
+.mt-3 a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.mt-3 a:hover {
+    text-decoration: underline;
+}
