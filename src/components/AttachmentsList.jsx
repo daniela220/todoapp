@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 const API_BASE_URL = 'https://sandbox.academiadevelopers.com';
 
 async function fetchAttachments() {
+    const token = localStorage.getItem('authToken');
+    console.log('Token:', token); // Verifica que el token esté presente
   const response = await fetch(`${API_BASE_URL}/taskmanager/attachments/`, {
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
   });
   if (!response.ok) {
@@ -18,7 +20,7 @@ async function createAttachment(formData) {
   const response = await fetch(`${API_BASE_URL}/taskmanager/attachments/`, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
     body: formData,
   });
@@ -31,7 +33,7 @@ async function createAttachment(formData) {
 async function fetchAttachment(id) {
   const response = await fetch(`${API_BASE_URL}/taskmanager/attachments/${id}/`, {
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
   });
   if (!response.ok) {
@@ -44,7 +46,7 @@ async function updateAttachment(id, formData) {
   const response = await fetch(`${API_BASE_URL}/taskmanager/attachments/${id}/`, {
     method: 'PUT',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
     body: formData,
   });
@@ -58,7 +60,7 @@ async function deleteAttachment(id) {
   const response = await fetch(`${API_BASE_URL}/taskmanager/attachments/${id}/`, {
     method: 'DELETE',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
   });
   if (!response.ok) {

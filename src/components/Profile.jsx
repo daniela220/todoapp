@@ -7,10 +7,14 @@ export function Profile() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("https://sandbox.academiadevelopers.com/api-auth", {
+        fetch("https://sandbox.academiadevelopers.com/profile", {
             method: "GET",
-            credentials: "include", 
-        })
+            headers: {
+              "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+            },
+            credentials: "include",
+          })
+          
             .then((response) => {
                 if (response.status === 401) {
                     setUser(null);
