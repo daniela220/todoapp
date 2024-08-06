@@ -95,10 +95,10 @@ body {
 /* Estilos del Etiqueta y Checkbox */
 .list li label {
   display: flex;
-  gap: 0.5rem; /* Ajuste para mayor espacio entre checkbox y texto */
+  gap: 0.5rem; 
   cursor: pointer;
   align-items: center;
-  font-size: 1rem; /* Ajuste para mayor legibilidad */
+  font-size: 1rem; 
 }
 
 .list li input {
@@ -108,14 +108,14 @@ body {
 .list li label::before {
   content: "";
   display: block;
-  width: 1rem; /* Tamaño del checkbox */
+  width: 1rem; 
   height: 1rem;
   background: hsl(200, 100%, 90%);
   border-radius: 0.25em;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.3s; /* Transición suave para el hover */
+  transition: background 0.3s; 
 }
 
 .list li:hover::before {

@@ -1,4 +1,4 @@
-import "./TodoItem.css";
+import "../css/TodoItem.css";
 
 export function TodoItem({ completed, id, title, toggleTodo, deleteTodo }) {
     return (

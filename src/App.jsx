@@ -8,6 +8,7 @@ import { Signup } from "./components/Signup";
 import { Profile } from "./components/Profile";
 import { MembersList } from "./components/MembersList";
 import { MemberForm } from "./components/MemberForm";
+import { AttachmentsList } from "./components/AttachmentsList";
 import "./App.css";
 
 export default function App() {
@@ -66,6 +67,9 @@ export default function App() {
         <Route path="/members" element={<MembersList />} />
         <Route path="/members/new" element={<MemberForm />} />
         <Route path="/members/edit/:id" element={<MemberForm />} />
+        <Route path="/members/edit/:id" element={<MemberForm />} />
+        <Route path="/attachments" element={<AttachmentsList />} />
+
       </Routes>
     </Router>
   );

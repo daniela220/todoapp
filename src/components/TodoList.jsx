@@ -1,5 +1,5 @@
 import { TodoItem } from "./TodoItem"
-import "./TodoList.css";
+import "../css/TodoList.css";
 
 export function TodoList({ todos, toggleTodo, deleteTodo }) {
   return (
