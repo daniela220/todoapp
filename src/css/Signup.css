@@ -90,3 +90,7 @@ body {
 .mt-3 a:hover {
     text-decoration: underline;
 }
+
+.titulo {
+    color: black;
+}

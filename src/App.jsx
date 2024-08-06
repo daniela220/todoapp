@@ -46,7 +46,7 @@ export default function App() {
           path="/"
           element={
             <>
-              <h1 className="titulo">Bienvenido</h1>
+              <h1 className="titulo">¡Bienvenido!</h1>
               <NewTodoForm onSubmit={addTodo} />
               <h2 className="header">Lista de Tareas</h2>
               <TodoList

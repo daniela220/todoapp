@@ -1,7 +1,7 @@
 
 
 body {
-    background: #333;
+    background: #ffffff;
     color: hsl(200, 100%, 90%);
     margin: 0; /* Elimina el margen predeterminado del body */
     padding: 0; /* Elimina el padding para evitar desalineaciones */
@@ -56,7 +56,7 @@ body {
   background: hsl(200, 100%, 50%, 0.2);
 }
 
-/* Botón de Peligro */
+/* Botón de Eliminar */
 .btn.btn-danger {
   background: hsl(0, 100%, 40%, 0.1);
   border: 1px solid hsl(0, 100%, 40%);
@@ -71,8 +71,9 @@ body {
 /* Estilos del Encabezado */
 .header {
   font-size: 1.5rem;
-  margin: 1.5rem 0 0.5rem; /* Ajuste para márgenes superior e inferior */
-  color: black; /* Cambia el color del texto a negro */
+  margin: 1.5rem 0 0.5rem; 
+  color: black; 
+  text-align:justify;
 }
 
 /* Estilos de la Lista */

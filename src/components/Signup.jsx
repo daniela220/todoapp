@@ -28,13 +28,13 @@ export function Signup() {
             },
             credentials: "include",
         })
-            .then((response) => response.json())
-            .then((data) => {
-                window.location.href = "/login";
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        .then((response) => response.json())
+        .then((data) => {
+            window.location.href = "/login";
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     };
 
     return (
@@ -43,6 +43,7 @@ export function Signup() {
                 <div className="container">
                     <div className="row justify-content-center">
                         <div>
+                            <h1 className="text-center mb-4 titulo" >Registro</h1> 
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
                                     <label
