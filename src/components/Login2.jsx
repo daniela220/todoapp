@@ -17,32 +17,42 @@ export function Login2() {
     setLoading(true);
     setError(null);
 
-    fetch("https://sandbox.academiadevelopers.com/api-auth", {
+    fetch("https://sandbox.academiadevelopers.com/api-auth/", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       credentials: "include",
     })
-    .then((response) => {
-      if (response.status === 401) {
-        setError("Usuario o contraseña incorrectos");
-      } else if (response.ok) {
+    .then(async (response) => {
+      const contentType = response.headers.get("content-type");
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || response.statusText);
+      }
+
+      if (contentType && contentType.includes("application/json")) {
         return response.json();
       } else {
-        setError("Error desconocido");
+        const errorText = await response.text();
+        throw new Error(`Unexpected content type: ${contentType}. Response: ${errorText}`);
       }
     })
     .then((data) => {
       if (data?.token) {
         localStorage.setItem("authToken", data.token);
+        // Verificar si el token se ha almacenado correctamente
+        console.log("Token almacenado:", localStorage.getItem("authToken"));
         navigate("/profile");
+      } else {
+        throw new Error("Token no recibido");
       }
     })
     .catch((error) => {
-      setError("Error en la conexión");
-      console.log(error);
+      setError(error.message);
+      console.error("Error:", error);
     })
     .finally(() => {
       setLoading(false);

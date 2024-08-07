@@ -7,41 +7,74 @@ export function Profile() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("https://sandbox.academiadevelopers.com/profile", {
+        const token = localStorage.getItem("authToken");
+        console.log("Token obtenido de localStorage:", token);
+
+        if (!token) {
+            setError("No auth token found. Please log in.");
+            setIsLoading(false);
+            return;
+        }
+
+        fetch("https://sandbox.academiadevelopers.com/users/profiles/", {
             method: "GET",
             headers: {
-              "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+              "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json"
             },
             credentials: "include",
-          })
-          
-            .then((response) => {
-                if (response.status === 401) {
-                    setUser(null);
-                } else {
-                    return response.json();
-                }
-            })
-            .then((data) => {
-                setUser(data);
-                setIsLoading(false);
-            })
-            .catch((e) => {
-                setError(e.message);
-                setIsLoading(false);
-            });
+        })
+        .then(async (response) => {
+            const contentType = response.headers.get("content-type");
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(errorText || response.statusText);
+            }
+
+            if (contentType && contentType.includes("application/json")) {
+                return response.json();
+            } else {
+                const errorText = await response.text();
+                throw new Error(`Unexpected content type: ${contentType}. Response: ${errorText}`);
+            }
+        })
+        .then((data) => {
+            setUser(data);
+            setIsLoading(false);
+        })
+        .catch((e) => {
+            setError(e.message);
+            setIsLoading(false);
+        });
     }, []);
 
     function logout() {
-        fetch("https://sandbox.academiadevelopers.com/api-auth", {
+        const token = localStorage.getItem("authToken");
+
+        fetch("https://sandbox.academiadevelopers.com/api-auth/logout/", {
             method: "POST",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json"
+            },
             credentials: "include",
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setUser(null);
-            });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to logout");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            setUser(null);
+            localStorage.removeItem("authToken");
+            window.location.href = "/login";
+        })
+        .catch((e) => {
+            console.error("Error during logout:", e);
+        });
     }
 
     if (isLoading) return <div className="loading-message">Loading...</div>;
@@ -53,32 +86,16 @@ export function Profile() {
                 {user ? (
                     <div>
                         <h1 className="profile-heading">User Profile</h1>
-                        <p className="profile-text">
-                            Nombre de usuario: {user.username}
-                        </p>
+                        <p className="profile-text">Nombre de usuario: {user.username}</p>
                         <p className="profile-text">Email: {user.email}</p>
-                        <button className="profile-button" onClick={logout}>
-                            Logout
-                        </button>
+                        <button className="profile-button" onClick={logout}>Logout</button>
                     </div>
                 ) : (
                     <div>
                         <p>No se ha iniciado sesión</p>
                         <div className="profile-buttons">
-                            <button
-                                onClick={() =>
-                                    (window.location.href = "/login")
-                                }
-                            >
-                                Iniciar sesión
-                            </button>
-                            <button
-                                onClick={() =>
-                                    (window.location.href = "/signup")
-                                }
-                            >
-                                Registrarse
-                            </button>
+                            <button onClick={() => (window.location.href = "/login")}>Iniciar sesión</button>
+                            <button onClick={() => (window.location.href = "/signup")}>Registrarse</button>
                         </div>
                     </div>
                 )}
