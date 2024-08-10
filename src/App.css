@@ -2,7 +2,7 @@
 
 body {
     background: #ffffff;
-    color: hsl(200, 100%, 90%);
+    color: hsl(0, 0%, 0%);
     margin: 0; /* Elimina el margen predeterminado del body */
     padding: 0; /* Elimina el padding para evitar desalineaciones */
     height: 100vh; /* Usa el alto de la ventana de visualización */

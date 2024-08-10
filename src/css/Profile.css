@@ -91,3 +91,15 @@
 .profile-buttons button:last-child:hover {
     background-color: #c82333;
 }
+
+/* src/css/Profile.css */
+.button-container {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.profile-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

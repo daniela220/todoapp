@@ -9,6 +9,8 @@ import { Profile } from "./components/Profile";
 import { MembersList } from "./components/MembersList";
 import { MemberForm } from "./components/MemberForm";
 import { AttachmentsList } from "./components/AttachmentsList";
+import { AttachmentsPost } from "./components/AttachmentsPost";
+import { Bienvenida } from "./components/Bienvenida";
 import "./App.css";
 
 export default function App() {
@@ -42,20 +44,9 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route
+      <Route
           path="/"
-          element={
-            <>
-              <h1 className="titulo">¡Bienvenido!</h1>
-              <NewTodoForm onSubmit={addTodo} />
-              <h2 className="header">Lista de Tareas</h2>
-              <TodoList
-                todos={todos}
-                toggleTodo={toggleTodo}
-                deleteTodo={deleteTodo}
-              />
-            </>
-          }
+          element={<Bienvenida />} 
         />
         <Route path="/login" element={<Login2 />} />
         <Route path="/signup" element={<Signup />} />
@@ -69,6 +60,8 @@ export default function App() {
         <Route path="/members/edit/:id" element={<MemberForm />} />
         <Route path="/members/edit/:id" element={<MemberForm />} />
         <Route path="/attachments" element={<AttachmentsList />} />
+        <Route path="/attachments_create" element={<AttachmentsPost />} />
+
 
       </Routes>
     </Router>

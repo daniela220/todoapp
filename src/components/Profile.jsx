@@ -1,10 +1,13 @@
+// src/components/Profile.js
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/Profile.css";
 
 export function Profile() {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("authToken");
@@ -16,20 +19,22 @@ export function Profile() {
             return;
         }
 
-        fetch("https://sandbox.academiadevelopers.com/users/profiles/", {
-            method: "GET",
-            headers: {
-              "Authorization": `Bearer ${token}`,
-              "Content-Type": "application/json"
-            },
-            credentials: "include",
-        })
+        fetch("https://sandbox.academiadevelopers.com/users/profiles/profile_data/",
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Token ${token}`, // Asegúrate de que el token esté en el formato correcto
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            }
+        )
         .then(async (response) => {
             const contentType = response.headers.get("content-type");
 
             if (!response.ok) {
                 const errorText = await response.text();
-                throw new Error(errorText || response.statusText);
+                throw new Error(`Error fetching profile data: ${errorText || response.statusText}`);
             }
 
             if (contentType && contentType.includes("application/json")) {
@@ -52,28 +57,36 @@ export function Profile() {
     function logout() {
         const token = localStorage.getItem("authToken");
 
-        fetch("https://sandbox.academiadevelopers.com/api-auth/logout/", {
+        if (!token) {
+            console.error("No token found for logout");
+            setError("No token found for logout");
+            return;
+        }
+
+        fetch("https://sandbox.academiadevelopers.com/users/profiles/logout/", {
             method: "POST",
             headers: {
-              "Authorization": `Bearer ${token}`,
-              "Content-Type": "application/json"
+                "Authorization": `Token ${token}`, // Asegúrate de que el formato del token sea el correcto
+                "Content-Type": "application/json",
             },
             credentials: "include",
         })
-        .then((response) => {
+        .then(async (response) => {
             if (!response.ok) {
-                throw new Error("Failed to logout");
+                const errorText = await response.text();
+                throw new Error(`Logout failed: ${response.status} ${errorText}`);
             }
             return response.json();
         })
         .then((data) => {
-            console.log(data);
+            console.log("Logout response:", data);
             setUser(null);
             localStorage.removeItem("authToken");
-            window.location.href = "/login";
+            navigate("/login"); // Redirige a la página de login
         })
         .catch((e) => {
             console.error("Error during logout:", e);
+            setError(`Failed to logout: ${e.message}`);
         });
     }
 
@@ -85,17 +98,20 @@ export function Profile() {
             <div className="profile-card">
                 {user ? (
                     <div>
-                        <h1 className="profile-heading">User Profile</h1>
+                        <h1 className="profile-heading">Datos de usuario</h1>
                         <p className="profile-text">Nombre de usuario: {user.username}</p>
                         <p className="profile-text">Email: {user.email}</p>
-                        <button className="profile-button" onClick={logout}>Logout</button>
+                        <div className="button-container">
+                            <button className="profile-button" onClick={logout}>Logout</button>
+                            <button className="profile-button" onClick={() => navigate("/attachments")}>View Attachments</button>
+                        </div>
                     </div>
                 ) : (
                     <div>
                         <p>No se ha iniciado sesión</p>
                         <div className="profile-buttons">
-                            <button onClick={() => (window.location.href = "/login")}>Iniciar sesión</button>
-                            <button onClick={() => (window.location.href = "/signup")}>Registrarse</button>
+                            <button onClick={() => navigate("/login")}>Iniciar sesión</button>
+                            <button onClick={() => navigate("/signup")}>Registrarse</button>
                         </div>
                     </div>
                 )}
