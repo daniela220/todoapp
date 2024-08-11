@@ -29,7 +29,7 @@ export const CreateProject = () => {
     };
 
     try {
-      const response = await fetch('http://sandbox.academiadevelopers.com/taskmanager/projects/', {
+      const response = await fetch('https://sandbox.academiadevelopers.com/taskmanager/projects/', {
         method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,

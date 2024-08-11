@@ -41,7 +41,7 @@ const fetchTasks = async (page, pageSize) => {
 
 // Función para eliminar una tarea por ID
 const deleteTask = async (taskId) => {
-  const API_URL = `http://sandbox.academiadevelopers.com/taskmanager/tasks/${taskId}/`;
+  const API_URL = `https://sandbox.academiadevelopers.com/taskmanager/tasks/${taskId}/`;
   const token = localStorage.getItem("authToken");
 
   if (!token) {

@@ -35,7 +35,7 @@ export const CreateTask = () => {
     };
 
     try {
-      const response = await fetch('http://sandbox.academiadevelopers.com/taskmanager/tasks/', {
+      const response = await fetch('https://sandbox.academiadevelopers.com/taskmanager/tasks/', {
         method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,
