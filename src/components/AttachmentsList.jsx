@@ -4,6 +4,9 @@ const API_BASE_URL = 'https://sandbox.academiadevelopers.com';
 
 async function fetchAttachments() {
   const token = localStorage.getItem('authToken');
+  if (!token) {
+    throw new Error('No se encontró el token de autenticación');
+  }
   console.log('Token:', token); // Verifica que el token esté presente
   const response = await fetch(`${API_BASE_URL}/taskmanager/attachments/`, {
     headers: {
@@ -11,7 +14,7 @@ async function fetchAttachments() {
     },
   });
   if (!response.ok) {
-    throw new Error('Error al obtener los adjuntos');
+    throw new Error('Error al obtener los adjuntos: ' + response.statusText);
   }
   return response.json();
 }
@@ -27,12 +30,12 @@ export function AttachmentsList() {
         const data = await fetchAttachments();
         console.log('Adjuntos obtenidos:', data);
 
-        // Asegúrate de que `results` sea un array y úsalo
-        if (Array.isArray(data.results)) {
+        // Verifica que `data.results` sea un array y úsalo
+        if (data && Array.isArray(data.results)) {
           setAttachments(data.results);
         } else {
           setAttachments([]);
-          console.error('La clave `results` no es un array:', data);
+          console.error('La clave `results` no es un array o no existe:', data);
         }
       } catch (error) {
         setError(error.message);
@@ -52,7 +55,16 @@ export function AttachmentsList() {
       <ul>
         {attachments.map((attachment) => (
           <li key={attachment.id}>
-            {attachment.name}
+            <p><strong>Nombre:</strong> {attachment.name}</p>
+            {/* Si el campo `file` está disponible, muestra la URL del archivo */}
+            {attachment.file && (
+              <p>
+                <strong>Archivo:</strong>{' '}
+                <a href={attachment.file} target="_blank" rel="noopener noreferrer">
+                  Ver archivo
+                </a>
+              </p>
+            )}
             {/* Aquí puedes agregar las funciones de edición y eliminación */}
           </li>
         ))}

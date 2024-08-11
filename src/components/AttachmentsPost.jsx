@@ -10,15 +10,15 @@ export function AttachmentsPost() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-    
+
         const formData = new FormData();
         formData.append('name', name);
-    
-        // Solo adjunta el archivo si existe
+
+        // Solo agregar el archivo si existe
         if (file) {
             formData.append('file', file);
         }
-    
+
         try {
             const response = await fetch(`${API_BASE_URL}/taskmanager/attachments/`, {
                 method: 'POST',
@@ -27,24 +27,24 @@ export function AttachmentsPost() {
                 },
                 body: formData
             });
-    
+
+            // Verificar si la respuesta es exitosa
             if (!response.ok) {
-                const errorDetails = await response.json();  // <-- obtener detalles del error
-                console.error('Error Details:', errorDetails);  // <-- mostrar en la consola
-                throw new Error('Error al crear el adjunto');
+                const errorDetails = await response.json();
+                console.error('Error Details:', errorDetails);
+                throw new Error(errorDetails.file ? errorDetails.file[0] : 'Error al crear el adjunto');
             }
-    
+
+            // Leer y manejar la respuesta JSON solo si es exitosa
             const result = await response.json();
             setSuccessMessage('Adjunto creado exitosamente');
             setName('');
-            setFile(null);
-    
+            setFile(null);  // Limpiar el archivo
             console.log('Nuevo Attachment creado:', result);
         } catch (error) {
             setError(error.message);
         }
     }
-    
 
     return (
         <div>
@@ -63,7 +63,7 @@ export function AttachmentsPost() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="file">Archivo (opcional):</label>
+                    <label htmlFor="file">Archivo:</label>
                     <input
                         type="file"
                         id="file"

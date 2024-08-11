@@ -8,7 +8,7 @@ export function Bienvenida() {
   return (
     <div className="welcome-container">
       <h1>¡Bienvenido!</h1>
-      <h2>Esta aplicación te permitirá mantener un orden de tus tareas diarias</h2>
+      <h2>Esta aplicación te permitirá mantener un orden de tus tareas diarias.</h2>
       <Link to="/login">
         <button className="welcome-button">Ir al Login</button>
       </Link>

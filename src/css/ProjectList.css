@@ -1,0 +1,40 @@
+/* Estilos generales para el contenedor de la lista de proyectos */
+.project-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Estilos para cada proyecto en la lista */
+  .project-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 100%; /* Asegúrate de que el ancho esté ajustado */
+    max-width: 800px; /* Limita el ancho máximo para una mejor presentación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para el formulario de creación y edición */
+  .edit-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  /* Controles de paginación */
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    margin: 0 5px;
+  }
+  

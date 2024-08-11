@@ -1,4 +1,3 @@
-// src/components/Profile.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Profile.css";
@@ -103,7 +102,7 @@ export function Profile() {
                         <p className="profile-text">Email: {user.email}</p>
                         <div className="button-container">
                             <button className="profile-button" onClick={logout}>Logout</button>
-                            <button className="profile-button" onClick={() => navigate("/attachments")}>View Attachments</button>
+                            <button className="profile-button" onClick={() => navigate("/attachments")}>Ver Tareas</button>
                         </div>
                     </div>
                 ) : (

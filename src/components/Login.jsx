@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import "../css/Login.css";
 
-export function Login2() {
+export function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
