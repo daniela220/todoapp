@@ -3,7 +3,7 @@ import "../css/ProjectList.css";
 
 // Función para obtener proyectos desde la API con parámetros
 const fetchProjects = async (page, pageSize) => {
-  const API_URL = `http://sandbox.academiadevelopers.com/taskmanager/projects/?page=${page}&page_size=${pageSize}&ordering=-created_at`;
+  const API_URL = `https://sandbox.academiadevelopers.com/taskmanager/projects/?page=${page}&page_size=${pageSize}&ordering=-created_at`;
   
   try {
     const response = await fetch(API_URL, {
