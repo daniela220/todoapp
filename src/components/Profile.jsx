@@ -65,7 +65,7 @@ export function Profile() {
         fetch("https://sandbox.academiadevelopers.com/users/profiles/logout/", {
             method: "POST",
             headers: {
-                "Authorization": `Token ${token}`, // Asegúrate de que el formato del token sea el correcto
+                "Authorization": `Token ${token}`,
                 "Content-Type": "application/json",
             },
             credentials: "include",
@@ -102,7 +102,7 @@ export function Profile() {
                         <p className="profile-text">Email: {user.email}</p>
                         <div className="button-container">
                             <button className="profile-button" onClick={logout}>Logout</button>
-                            <button className="profile-button" onClick={() => navigate("/attachments")}>Ver Tareas</button>
+                            <button className="profile-button" onClick={() => navigate("/projects")}>Ver Proyectos</button>
                         </div>
                     </div>
                 ) : (

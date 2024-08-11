@@ -1,40 +1,109 @@
-/* Estilos generales para el contenedor de la lista de proyectos */
-.project-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+/* src/css/ProjectList.css */
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.delete-button {
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-right: 5px;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f; /* Dark Red */
+}
+
+.edit-button {
+  background-color: #2196F3; /* Blue */
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #1976D2; /* Dark Blue */
+}
+
+.edit-form {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.edit-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
   }
-  
-  /* Estilos para cada proyecto en la lista */
-  .project-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    padding: 15px;
-    width: 100%; /* Asegúrate de que el ancho esté ajustado */
-    max-width: 800px; /* Limita el ancho máximo para una mejor presentación */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilos para el formulario de creación y edición */
-  .edit-form {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+
+  button {
     width: 100%;
-    max-width: 800px;
+    margin-top: 5px;
   }
-  
-  /* Controles de paginación */
+
   .pagination-controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column;
   }
-  
-  .pagination-controls button {
-    margin: 0 5px;
-  }
-  
+}

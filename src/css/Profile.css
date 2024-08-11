@@ -6,16 +6,16 @@
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
     min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura de la vista */
-    background-color: #f0f2f5; /* Color de fondo para el contenedor */
+    background-color: #fff; /* Fondo blanco para el contenedor */
     padding: 20px; /* Relleno alrededor del contenedor */
     box-sizing: border-box; /* Incluye el relleno en el cálculo del ancho total */
 }
 
 /* Tarjeta de perfil con un diseño limpio */
 .profile-card {
-    background: #ffffff;
+    background: #fff; /* Fondo blanco para la tarjeta */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra negra más marcada */
     padding: 20px;
     max-width: 400px; /* Ancho máximo para la tarjeta */
     width: 100%; /* Ajusta el ancho al contenedor */
@@ -26,30 +26,33 @@
 .profile-heading {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333;
+    color: #000; /* Texto negro */
 }
 
 /* Texto dentro de la tarjeta de perfil */
 .profile-text {
     font-size: 16px;
     margin: 5px 0;
-    color: #555;
+    color: #000; /* Texto negro */
 }
 
 /* Botón de perfil */
 .profile-button {
-    background-color: #007bff;
-    border: none;
-    color: white;
+    background-color: #000; /* Fondo negro para el botón */
+    border: 1px solid #000; /* Borde negro */
+    color: #fff; /* Texto blanco */
     padding: 10px 20px;
     margin-top: 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .profile-button:hover {
-    background-color: #0056b3;
+    background-color: #fff; /* Fondo blanco al pasar el cursor */
+    color: #000; /* Texto negro al pasar el cursor */
+    border-color: #000; /* Borde negro al pasar el cursor */
 }
 
 /* Mensaje de carga y error */
@@ -57,7 +60,7 @@
 .error-message {
     text-align: center;
     font-size: 18px;
-    color: #666;
+    color: #000; /* Texto negro */
 }
 
 /* Contenedor de botones para iniciar sesión y registrarse */
@@ -70,36 +73,28 @@
 
 /* Estilo para los botones de iniciar sesión y registrarse */
 .profile-buttons button {
-    background-color: #28a745;
-    border: none;
-    color: white;
+    background-color: #000; /* Fondo negro para los botones */
+    border: 1px solid #000; /* Borde negro */
+    color: #fff; /* Texto blanco */
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .profile-buttons button:hover {
-    background-color: #218838;
+    background-color: #fff; /* Fondo blanco al pasar el cursor */
+    color: #000; /* Texto negro al pasar el cursor */
+    border-color: #000; /* Borde negro al pasar el cursor */
 }
 
 /* Botón de eliminar o registrar */
 .profile-buttons button:last-child {
-    background-color: #dc3545;
+    background-color: #000; /* Fondo negro para el último botón */
 }
 
 .profile-buttons button:last-child:hover {
-    background-color: #c82333;
-}
-
-/* src/css/Profile.css */
-.button-container {
-    display: flex;
-    gap: 10px; /* Espacio entre los botones */
-}
-
-.profile-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    background-color: #fff; /* Fondo blanco al pasar el cursor para el último botón */
+    color: #000; /* Texto negro al pasar el cursor para el último botón */
 }

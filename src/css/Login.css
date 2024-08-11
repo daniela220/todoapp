@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Fondo de la página */
+    background-color: #fff; /* Fondo blanco */
 }
 
 /* Contenedor principal */
@@ -21,13 +21,13 @@ body {
 /* Estilo del título y párrafo */
 .login-container h1 {
     font-size: 28px;
-    color: #343a40;
+    color: #000; /* Texto negro */
     margin-bottom: 10px;
 }
 
 .login-container p {
     font-size: 16px;
-    color: #6c757d;
+    color: #000; /* Texto negro */
     margin-bottom: 30px;
 }
 
@@ -35,9 +35,9 @@ body {
 .container {
     max-width: 500px;
     width: 100%;
-    background: #ffffff;
+    background: #fff; /* Fondo blanco */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra negra */
     padding: 20px;
 }
 
@@ -49,7 +49,7 @@ body {
 .formLabel {
     display: block;
     font-size: 16px;
-    color: #495057;
+    color: #000; /* Texto negro */
     margin-bottom: 5px;
 }
 
@@ -57,16 +57,16 @@ body {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ced4da;
+    border: 1px solid #000; /* Borde negro */
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 /* Estilo del botón de envío */
 .btn-login {
-    background-color: #000000;
+    background-color: #000; /* Fondo negro */
     border: none;
-    color: white;
+    color: #fff; /* Texto blanco */
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 4px;
@@ -75,31 +75,32 @@ body {
 }
 
 .btn-login:hover {
-    background-color: #000000;
+    background-color: #000; /* Fondo negro en hover */
 }
 
 .btn-login:disabled {
-    background-color: #6c757d;
+    background-color: #ccc; /* Fondo gris para estado deshabilitado */
     cursor: not-allowed;
 }
 
 /* Estilo del mensaje de error */
 .alert {
-    color: #dc3545;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+    color: #000; /* Texto negro */
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #000; /* Borde negro */
     padding: 10px;
     border-radius: 4px;
     font-size: 14px;
 }
 
+/* Estilo del enlace de registro */
 .mt-3 {
-    color: #000000;
+    color: #000; /* Texto negro */
     text-decoration: none;
 }
-/* Estilo del enlace de registro */
+
 .mt-3 a {
-    color: #000000;
+    color: #000; /* Texto negro */
     text-decoration: none;
 }
 

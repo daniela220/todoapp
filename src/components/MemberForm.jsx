@@ -1,42 +1,71 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function MemberForm() {
-  const { id } = useParams();
   const navigate = useNavigate();
-  const [name, setName] = useState("");
+  const [projectId, setProjectId] = useState(""); // ID del proyecto
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const method = id ? "PUT" : "POST";
-    const url = id
-      ? `https://sandbox.academiadevelopers.com/taskmanager/members/${id}/`
-      : "https://sandbox.academiadevelopers.com/taskmanager/members/";
+    if (!projectId) {
+      setError({ message: "Project ID is required" });
+      return;
+    }
 
-    fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ name }),
-    })
-      .then(response => response.json())
-      .then(() => navigate("/members"))
-      .catch(setError);
+    setIsLoading(true);
+    try {
+      const url = "https://sandbox.academiadevelopers.com/taskmanager/members/";
+      const data = {
+        project: parseInt(projectId, 10), // Convertir la ID del proyecto a un entero
+      };
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Token ${localStorage.getItem("authToken")}`, // Añade el token de autorización
+        },
+        credentials: "include",
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        // Intentar leer la respuesta como texto por si no es JSON
+        const errorText = await response.text();
+        throw new Error(`Error adding member: ${errorText}`);
+      }
+
+      // Redirige a la lista de miembros después de una creación exitosa
+      navigate("/members");
+    } catch (error) {
+      setError({ message: error.message });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>{id ? "Editar Miembro" : "Añadir Miembro"}</h2>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Nombre del miembro"
-        required
-      />
-      <button type="submit">{id ? "Actualizar" : "Añadir"}</button>
-      {error && <div>Error: {error.message}</div>}
+      <h2>Añadir Miembro</h2>
+      <div>
+        <label>
+          Project ID:
+          <input
+            type="number"
+            value={projectId}
+            onChange={(e) => setProjectId(e.target.value)}
+            placeholder="ID del proyecto"
+            required
+          />
+        </label>
+      </div>
+      <button type="submit" disabled={isLoading}>
+        Añadir
+      </button>
+      {isLoading && <div>Loading...</div>}
+      {error && <div className="error-message">Error: {error.message}</div>}
     </form>
   );
 }

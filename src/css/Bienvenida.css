@@ -1,0 +1,44 @@
+/* src/components/Welcome.css */
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff; /* Fondo negro */
+    color: #000000; /* Texto blanco */
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .welcome-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .welcome-button {
+    background-color: #fff; /* Fondo blanco para el botón */
+    color: #000; /* Texto negro para el botón */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .welcome-button:hover {
+    background-color: #000; /* Fondo negro cuando se pasa el cursor por encima */
+    color: #fff; /* Texto blanco cuando se pasa el cursor por encima */
+  }
+  
+  .welcome-button:focus {
+    outline: none; /* Quita el borde azul del enfoque */
+  }
+  

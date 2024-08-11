@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "../css/ProjectList.css";
 
 // Función para obtener proyectos desde la API con parámetros
@@ -92,6 +92,8 @@ export function ProjectList() {
     pageSize: 10
   });
 
+  const formRef = useRef(null);
+
   useEffect(() => {
     const loadProjects = async () => {
       try {
@@ -123,6 +125,9 @@ export function ProjectList() {
 
   const handleEdit = (project) => {
     setEditProject(project);
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleUpdate = async (event) => {
@@ -145,7 +150,6 @@ export function ProjectList() {
   };
 
   const handlePageChange = (page) => {
-    // Asegurarse de que la página sea válida antes de actualizar el estado
     if (page > 0 && page <= pagination.totalPages) {
       setPagination(prevPagination => ({
         ...prevPagination,
@@ -160,20 +164,23 @@ export function ProjectList() {
   return (
     <div className="project-list-container">
       {successMessage && <p className="success-message">{successMessage}</p>}
-      <ul>
+      <div className="project-grid">
         {projects.map(project => (
-          <li key={project.id} className="project-item">
+          <div key={project.id} className="project-card">
             <h2>{project.name}</h2>
+            <p><strong>ID:</strong> {project.id}</p> {/* Mostrar ID del proyecto */}
             <p><strong>Description:</strong> {project.description || 'N/A'}</p>
             <p><strong>Owner:</strong> {project.owner || 'N/A'}</p>
             <p><strong>Members:</strong> {project.members?.join(', ') || 'N/A'}</p>
-            <button className="delete-button" onClick={() => handleDelete(project.id)}>Delete</button>
-            <button className="edit-button" onClick={() => handleEdit(project)}>Edit</button>
-          </li>
+            <div className="project-actions">
+              <button className="delete-button" onClick={() => handleDelete(project.id)}>Delete</button>
+              <button className="edit-button" onClick={() => handleEdit(project)}>Edit</button>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
       {editProject && (
-        <form onSubmit={handleUpdate} className="edit-form">
+        <form ref={formRef} onSubmit={handleUpdate} className="edit-form">
           <h2>Edit Project</h2>
           <label>
             Name:

@@ -69,7 +69,7 @@ body {
     cursor: not-allowed;
   }
   
-  button:hover:not(:disabled) {
+  button:hover {
     background-color: #333;
   }
   
