@@ -13,7 +13,7 @@ import { CreateProject } from "./components/CreateProject";
 
 export default function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={todoapp}>
       <Routes>
       <Route
           path="/"
@@ -34,7 +34,7 @@ export default function App() {
         <Route path="/create-task" element={<CreateTask />} />
         <Route path="/projects" element={<ProjectList />} />
         <Route path="/create-project" element={<CreateProject />} />
-
+        
       </Routes>
     </Router>
   );
